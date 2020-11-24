@@ -1,0 +1,168 @@
+
+mysql> create table Employee_Details(Employee_ID int primary key,First_Name varchar(20),Last_Name varchar(20),Email_ID varchar(20),Phone_Number bigint unique,Hire_Date date,Job_ID int,Department_ID int,Designation varchar(20),Salary float check (Salary>0));
+Query OK, 0 rows affected (8.08 sec)
+
+mysql> alter table Employee_Details add Reporting_Manager varchar(20);
+Query OK, 0 rows affected (2.83 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Employee_Details add Reporting_Manager_ID int;
+Query OK, 0 rows affected (1.99 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into Employee_Details values(134,'Aakar','shika','aakar@gmail.com',968531472,'2020-09-01',501,2005,'Financial Department',50000,'Shiva',600);
+Query OK, 1 row affected (0.66 sec)
+
+mysql> insert into Employee_Details values(152,'Sasi','Rekha','rekha@gmail.com',9368547298,'2020-05-21',506,2005,'Financial Department',70000,'Shiva',600);
+Query OK, 1 row affected (0.30 sec)
+
+mysql> insert into Employee_Details values(183,'Lakshana','Shri','lakshana@gmail.com',743695214,'2020-04-19',509,2008,'Health Care',95000,'Aarthi',509);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into Employee_Details values(194,'Nandhu','Ammu','nandhu@gmail.com',875789687,'2020-07-25',512,2008,'Health Care',45000,'Aarthi',509);
+Query OK, 1 row affected (1.35 sec)
+
+mysql> insert into Employee_Details values(127,'Amutha','Valli','amutha@gmail.com',896387452,'2020-02-23',517,2003,'Security',82000,'Latha',519);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into Employee_Details values(169,'Magud','Eswaran','magudi@gmail.com',9968742852,'2020-02-26',527,2003,'Security',45000,'Latha',519);
+Query OK, 1 row affected (1.37 sec)
+
+mysql> insert into Employee_Details values(197,'Saro','Suganthi','saro@gmail.com',9685523455,'2020-03-17',527,2001,'R&D',35000,'Aajun',536);
+Query OK, 1 row affected (0.88 sec)
+
+mysql> insert into Employee_Details values(113,'Priya','Shani','priya@gmail.com',9756318525,'2020-11-13',524,2001,'R&D',25000,'Aajun',536);
+Query OK, 1 row affected (1.16 sec)
+
+
+mysql> select * from Employee_Details;
++-------------+------------+-----------+--------------------+--------------+------------+--------+---------------+----------------------+--------+-------------------+----------------------+
+| Employee_ID | First_Name | Last_Name | Email_ID           | Phone_Number | Hire_Date  | Job_ID | Department_ID | Designation          | Salary | Reporting_Manager | Reporting_Manager_ID |
++-------------+------------+-----------+--------------------+--------------+------------+--------+---------------+----------------------+--------+-------------------+----------------------+
+|         113 | Priya      | Shani     | priya@gmail.com    |   9756318525 | 2020-11-13 |    524 |          2001 | R&D                  |  25000 | Aajun             |                  536 |
+|         127 | Amutha     | Valli     | amutha@gmail.com   |    896387452 | 2020-02-23 |    517 |          2003 | Security             |  82000 | Latha             |                  519 |
+|         134 | Aakar      | shika     | aakar@gmail.com    |    968531472 | 2020-09-01 |    501 |          2005 | Financial Department |  50000 | Shiva             |                  600 |
+|         152 | Sasi       | Rekha     | rekha@gmail.com    |   9368547298 | 2020-05-21 |    506 |          2005 | Financial Department |  70000 | Shiva             |                  600 |
+|         169 | Magud      | Eswaran   | magudi@gmail.com   |   9968742852 | 2020-02-26 |    527 |          2003 | Security             |  45000 | Latha             |                  519 |
+|         183 | Lakshana   | Shri      | lakshana@gmail.com |    743695214 | 2020-04-19 |    509 |          2008 | Health Care          |  95000 | Aarthi            |                  509 |
+|         194 | Nandhu     | Ammu      | nandhu@gmail.com   |    875789687 | 2020-07-25 |    512 |          2008 | Health Care          |  45000 | Aarthi            |                  509 |
+|         197 | Saro       | Suganthi  | saro@gmail.com     |   9685523455 | 2020-03-17 |    527 |          2001 | R&D                  |  35000 | Aajun             |                  536 |
++-------------+------------+-----------+--------------------+--------------+------------+--------+---------------+----------------------+--------+-------------------+----------------------+
+8 rows in set (0.00 sec)
+
+mysql> select First_Name,Last_Name from Employee_Details where Salary > (select avg(Salary) from Employee_Details);
++------------+-----------+
+| First_Name | Last_Name |
++------------+-----------+
+| Amutha     | Valli     |
+| Sasi       | Rekha     |
+| Lakshana   | Shri      |
++------------+-----------+
+3 rows in set (0.25 sec)
+
+
+
+mysql> select Employee_ID,concat(First_Name,Last_Name) as Employee_Name from Employee_Details where Salary > (select avg(Salary) from Employee_Details);
++-------------+---------------+
+| Employee_ID | Employee_Name |
++-------------+---------------+
+|         127 | AmuthaValli   |
+|         152 | SasiRekha     |
+|         183 | LakshanaShri  |
++-------------+---------------+
+3 rows in set (0.02 sec)
+
+
+
+mysql> select Employee_ID,concat(First_Name,Last_Name) as Employee_Name,Salary,Department_ID,Job_ID from Employee_Details where Designation in (select Designation from Employee_Details where Employee_ID=169);
++-------------+---------------+--------+---------------+--------+
+| Employee_ID | Employee_Name | Salary | Department_ID | Job_ID |
++-------------+---------------+--------+---------------+--------+
+|         127 | AmuthaValli   |  82000 |          2003 |    517 |
+|         169 | MagudEswaran  |  45000 |          2003 |    527 |
++-------------+---------------+--------+---------------+--------+
+2 rows in set (0.26 sec)
+
+
+
+mysql> select concat(First_Name,Last_Name) as Employee_Name,Salary,Department_ID from Employee_Details where Salary in (select min(Salary) from Employee_Details where Designation='Health Care');
++---------------+--------+---------------+
+| Employee_Name | Salary | Department_ID |
++---------------+--------+---------------+
+| MagudEswaran  |  45000 |          2003 |
+| NandhuAmmu    |  45000 |          2008 |
++---------------+--------+---------------+
+2 rows in set (0.07 sec)
+
+
+
+mysql> select concat(First_Name,Last_Name) as Employee_Name,Employee_ID,Salary from Employee_Details where Reporting_Manager in (select Reporting_Manager from Employee_Details where Reporting_Manager='Shiva');
++---------------+-------------+--------+
+| Employee_Name | Employee_ID | Salary |
++---------------+-------------+--------+
+| Aakarshika    |         134 |  50000 |
+| SasiRekha     |         152 |  70000 |
++---------------+-------------+--------+
+2 rows in set (0.01 sec)
+
+
+
+mysql> select concat(First_Name,Last_Name) as Employee_Name,Department_ID,Job_ID from Employee_Details where Designation in (select Designation from Employee_Details where Designation='Financial Department');
++---------------+---------------+--------+
+| Employee_Name | Department_ID | Job_ID |
++---------------+---------------+--------+
+| Aakarshika    |          2005 |    501 |
+| SasiRekha     |          2005 |    506 |
++---------------+---------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> select concat(First_Name,Last_Name) as Employee_Name,Department_ID,Job_ID from Employee_Details where Salary in (select Salary from Employee_Details where Salary=3000 and Reporting_Manager_ID=121);
+Empty set (0.10 sec)
+
+mysql> insert into Employee_Details values(145,'Vanitha','Krishnan','vanita@gmail.com',996358452,'2020-03-19',530,2001,'R&D',30000,'Moni',121);
+Query OK, 1 row affected (0.33 sec)
+
+mysql> select concat(First_Name,Last_Name) as Employee_Name,Department_ID,Job_ID from Employee_Details where Salary in (select Salary from Employee_Details where Salary=3000 and Reporting_Manager_ID=121);
+Empty set (0.10 sec)
+
+mysql> select * from Employee_Details where Employee_ID in (select Employee_ID from Employee_Details where Salary=30000 and Reporting_Manager_ID=121);
++-------------+------------+-----------+------------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+| Employee_ID | First_Name | Last_Name | Email_ID         | Phone_Number | Hire_Date  | Job_ID | Department_ID | Designation | Salary | Reporting_Manager | Reporting_Manager_ID |
++-------------+------------+-----------+------------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+|         145 | Vanitha    | Krishnan  | vanita@gmail.com |    996358452 | 2020-03-19 |    530 |          2001 | R&D         |  30000 | Moni              |                  121 |
++-------------+------------+-----------+------------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> select * from Employee_Details where Employee_ID in (select Employee_ID from Employee_Details where Employee_ID=134 or Employee_ID=159 or Employee_ID=183);
++-------------+------------+-----------+--------------------+--------------+------------+--------+---------------+----------------------+--------+-------------------+----------------------+
+| Employee_ID | First_Name | Last_Name | Email_ID           | Phone_Number | Hire_Date  | Job_ID | Department_ID | Designation          | Salary | Reporting_Manager | Reporting_Manager_ID |
++-------------+------------+-----------+--------------------+--------------+------------+--------+---------------+----------------------+--------+-------------------+----------------------+
+|         134 | Aakar      | shika     | aakar@gmail.com    |    968531472 | 2020-09-01 |    501 |          2005 | Financial Department |  50000 | Shiva             |                  600 |
+|         183 | Lakshana   | Shri      | lakshana@gmail.com |    743695214 | 2020-04-19 |    509 |          2008 | Health Care          |  95000 | Aarthi            |                  509 |
++-------------+------------+-----------+--------------------+--------------+------------+--------+---------------+----------------------+--------+-------------------+----------------------+
+2 rows in set (0.05 sec)
+
+
+
+mysql> select * from Employee_Details where salary in (select salary from Employee_Details where Salary Between 10000 and 30000);
++-------------+------------+-----------+------------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+| Employee_ID | First_Name | Last_Name | Email_ID         | Phone_Number | Hire_Date  | Job_ID | Department_ID | Designation | Salary | Reporting_Manager | Reporting_Manager_ID |
++-------------+------------+-----------+------------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+|         113 | Priya      | Shani     | priya@gmail.com  |   9756318525 | 2020-11-13 |    524 |          2001 | R&D         |  25000 | Aajun             |                  536 |
+|         145 | Vanitha    | Krishnan  | vanita@gmail.com |    996358452 | 2020-03-19 |    530 |          2001 | R&D         |  30000 | Moni              |                  121 |
++-------------+------------+-----------+------------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+2 rows in set (0.04 sec)
+
+
+
+mysql> select * from Employee_Details where Salary in (select min(Salary) as Salary from Employee_Details where Salary Between Salary and 25000);
++-------------+------------+-----------+-----------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+| Employee_ID | First_Name | Last_Name | Email_ID        | Phone_Number | Hire_Date  | Job_ID | Department_ID | Designation | Salary | Reporting_Manager | Reporting_Manager_ID |
++-------------+------------+-----------+-----------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+|         113 | Priya      | Shani     | priya@gmail.com |   9756318525 | 2020-11-13 |    524 |          2001 | R&D         |  25000 | Aajun             |                  536 |
++-------------+------------+-----------+-----------------+--------------+------------+--------+---------------+-------------+--------+-------------------+----------------------+
+1 row in set (0.00 sec)
