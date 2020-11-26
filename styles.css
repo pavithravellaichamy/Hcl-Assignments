@@ -1,0 +1,62 @@
+input{
+	font: italic bold 15px Georgia,serif;
+	text-align:center;
+}
+div.project{
+	font: italic bold 20px Georgia,serif;
+	text-align:center;
+}
+table,tr,th{
+	font:  Georgia,serif;
+}
+ul
+{
+	font: italic bold 20px sans-serif;
+	color=#b3ecff;
+}
+pre#four
+{
+	color:#00cc00;
+}
+p#one
+{
+	color:#ff3385;
+	font:italic bold;
+	font-size:1.5em;
+}
+h1
+{
+	color:ff8c1a;
+}
+h2
+{
+	color:#ff471a;
+	font:italic;
+	font-size:1.0em;
+}
+p#two
+{
+	color:#00cccc;
+	font-size:1.7em;
+}
+div#animat
+{
+	text-align:center;
+	padding:25px;
+	height:20px;
+	width:200px;
+	background:#00cccc;
+	box-shadow:5px 5px 5px yellow;
+	font-size:20px;
+	-webkit-transition: -webkit-transform 2s,width 2s,height 2s;
+}
+div#animat:hover
+{
+	-webkit-transform:rotate(360deg);
+	height:20px;
+	width:200px;
+}
+img:hover {
+ 	width:250px;
+	height:250px;
+}
