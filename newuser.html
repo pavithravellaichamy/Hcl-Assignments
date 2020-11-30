@@ -1,13 +1,33 @@
 <!Doctype html>
 <head>
 	<title>
-		Sing Up
+		Sign Up
 	</title>
 	<link rel="stylesheet" href="styles.css">
+<script>
+function validateForm()
+    {
+   
+         var n=document.forms[0].elements[1].value;  //getting the value of the first element int the form
+         var m=document.forms[0].elements[2].value;  //getting the value of the second element int the form
+         var o=document.forms[0].elements[3].value;   //getting the value of the third element int the form
+         var p=document.forms[0].elements[4].value;   //getting the value of the fourth element int the form
+          var q=document.forms[0].elements[5].value;   //getting the value of the fifth element int the form
+          var r=document.forms[0].elements[6].value;   //getting the value of the sixth element int the form
+        if( n=="" || n==null || m=="" || m==null || o=="" || o==null || p=="" || p==null || q=="" || q==null || r=="" || r==null )  //checking for the condition
+        {
+            alert("Fill your details");
+        }
+        else
+        {
+	 window.location='project.html';  //directing to the main page
+        }
+    }
+ </script>
 </head>
 <body background="F:\home.jpg">
 	<h1 align="center">TRAVELOGUE ~ Tourist Guide</h1></br></br>
-	<form action="project.html" method="post">
+	<form action="javascript:validateForm();" method="post">
 	<div class="project"><label>Enter Name : </label><input type = "text" name = "name"/></br></br>
 	<label>Enter Password : </label><input type = "password" name = "password" /></br></br>
 	<label>Enter Email ID : </label><input type = "text" name = "emailid"/></br></br>
@@ -25,7 +45,7 @@
 				Interested in Travel<input type = "radio" name = "reason"/>
 				Travel for Photography<input type = "radio" name = "reason"/>
 				Travel with Family<input type = "radio" name = "reason"/></br></br>
-	<input type = "submit" value="Back to Login" name="go to login"/>
+	<input type = "submit" value="submit" name="go to login"/>
 	</div></form>
 </body>
 </html>
