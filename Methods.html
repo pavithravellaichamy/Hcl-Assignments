@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+  	document.write("String Methods"+"<br>");
+  	var str="Hello World";
+	document.write("Length : "+str.length+"<br>");  //returns the length
+	document.write("Index : "+str.indexOf("Hello")+"<br>");  //returns the index value
+	document.write("Index : "+str.lastIndexOf("world")+"<br>");  //returns the index value
+	document.write("Search : "+str.search("world")+"<br>");  //returns whether the element is there or not
+	document.write("Slice : "+str.slice(-6,-3)+"<br>"); //returns the sliced value
+	document.write("Substring : "+str.substring(0,5)+"<br>");  //returns the substring 
+	document.write("Replace : "+str.replace("Hello","Hi")+"<br>");  //replaced value
+	document.write("Uppercase : "+str.toUpperCase()+"<br>"); //returns the uppercase
+	document.write("Lowercase : "+str.toLowerCase()+"<br>");  //returns the lowercase
+	document.write("Trim : "+str.trim()+"<br>");  //returns the trimed value
+	document.write("Padstart : "+str.padStart(4,0)+"<br>");  //returns the pad value
+	document.write("Padend : "+str.padEnd(4,0)+"<br>"); //returns the pad value
+	document.write("charat : "+str.charAt(9)+"<br>"); //returns the character at the index
+	document.write("charcodeat : "+str.charCodeAt(0)+"<br>"); //returns the character code at the index
+	document.write("Split : "+str.split(" ")+"<br>");  //returns the split value
+	document.write("Number Methods"); 
+	var num=5;
+	var num1=9.36457;
+	document.write("Tostring : "+num.toString()+"<br>");  //returns the string
+	document.write("Tofixed : "+num1.toFixed(3)+"<br>");  //returns the fixed value
+	document.write("Exponential : "+num.toExponential(3)+"<br>");  //returns the exponential value
+	document.write("Precision : "+num.toPrecision(3)+"<br>"); //returns precision value
+	document.write("ValueOf : "+num.valueOf()+"<br>");  //returns the value of specified value
+	document.write("ParseInt : " +parseInt(num)+"<br>"); //checks whether the number is integer or not
+	document.write("Max value : "+Number.MAX_VALUE+"<br>"); //returns the max value
+	document.write("Min value : "+Number.MIN_VALUE+"<br>"); //returns the min value
+	document.write("Positive infinity : "+Number.POSITIVE_INFINITY+"<br>");  //returns the positive infinity
+	document.write("Array Methods");
+	var flower=["Rose","Lily","Lotus","Jasmine"]
+	document.write("To string : "+flower.toString()+"<br>");  //returns the string
+	document.write("Push : "+flower.push("Orchid")+"<br>");  //adds the element
+	document.write("Pop : "+flower.pop()+"<br>");  //removes the element
+	document.write("Shift : "+flower.shift()+"<br>"); //shifts the element
+	document.write("Unshift : "+flower.unshift("Tulips")+"<br>");  //unshift the element
+	document.write("Index : "+flower[2]+"<br>");  //returns the value at index 2
+	document.write("Delete : "+delete flower[3]+"<br>");  //deletes the value at index 3
+	document.write("splice : "+flower.splice(2,1,"Sun flower")+"<br>");  //returns the sliced value
+	document.write("Concat : "+flower.concat("Gardenias")+"<br>");  //concat the string
+	document.write("Math method");
+	document.write("PI : "+Math.PI+"<br>");  //returns thePI value
+	document.write("Round : "+Math.round(8.369)+"<br>");  //returns the rounded value
+	document.write("Power : "+Math.pow(9,3)+"<br>"); //returns the power value
+	document.write("Square Root : "+Math.sqrt(98)+"<br>");  //returns the square root
+	document.write("Abs : "+Math.abs(-9.657)+"<br>");  //returns the positive value
+	document.write("Ceil : "+Math.ceil(-4.58)+"<br>");  //returns the ceil value
+	document.write("Floor : "+Math.floor(-3.789)+"<br>");  //returns the floor value
+	document.write("Sin : "+Math.sin(45)+"<br>");  //returns the sin value
+	document.write("Cos : "+Math.cos(47)+"<br>"); //returns cos value
+	document.write("Min : "+Math.min(63,78,18,76,45)+"<br>");  //returns the min of value
+	document.write("Max : "+Math.max(53,15,78,95,14,35)+"<br>");  //returns the max of value
+	document.write("Random : "+Math.random()+"<br>"); //returns the random value
+	document.write("Log : "+Math.tanh(56)+"<br>"); //returns tanh value
+	document.write("Date Methods");
+	var d=new Date();
+	document.write("Year : "+d.getFullYear()+"<br>"); //returns the year
+	document.write("Month : "+d.getMonth()+"<br>");  //returns the month
+	document.write("Date : "+d.getDate()+"<br>");  //returns the date
+	document.write("Hours : "+d.getHours()+"<br>");  //returns the hour
+	document.write("Minutes : "+d.getMinutes()+"<br>");  //returns the minutes
+	document.write("Seconds : "+d.getSeconds()+"<br>");  //returns the seconds
+	document.write("MilliSeconds : "+d.getMilliSeconds()+"<br>");  //returns the milliseconds
+	document.write("Now : "+Date.now());  //returns the current date
+
+  </script>
+ </body>
+</html>
