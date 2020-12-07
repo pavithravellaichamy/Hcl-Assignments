@@ -1,0 +1,178 @@
+<!Doctype html>
+<html>
+                 <head>
+		<title>
+			Selectors
+		</title>
+		<style  type="text/css">
+			.class1 .class2{
+				color:lime;
+			  }
+			div.class3{
+				background-color:yellow;
+			  }
+			span#id1{
+				background-color:orange;
+			  }
+			div,p{
+				color:blue;
+			  }
+			div p{
+				color:orange;
+			  }
+			div>p{
+				background-color:green;
+			  }
+			div+p{
+				height=30px;
+			  }
+			p~ul{
+				color:red;
+				font-fanily:verdana;
+			  }
+			a[target] {
+				  background-color: yellow;
+				}
+			a[target=_blank] {
+				  background-color:pink;
+					}
+			[title~=css] {
+ 				background-color:lime;
+				}
+			[class|=top] {
+ 				 background: green;
+				}
+			[class^="head"] {
+ 				 background: black;
+				}	
+			[class$="first"] {
+				  background: blue;
+				}	
+			[class*="te"] {
+ 				 background:orange;
+				}
+			a:active{
+  				color:#ff3333;
+				}
+			p::after { 
+				  content: " - css";
+				}	
+			p::before { 
+				  content: " - css";
+				}
+			input:checked {
+ 				 height: 80px;
+				}
+			p:empty {
+  				background: #ff0000;
+				}
+			input[type=text]:disabled {
+ 				 background: #dddddd;
+				}
+			input[type=text]:enabled {
+ 				 background: #ffff00;
+					}
+			p:first-child {
+				  background-color: yellow;
+				}
+			p:first-child {
+				  background-color: black;
+				color:red;
+				}	
+			p::first-letter {
+ 				 font-size: 100%;
+				  color: #8A2BE2;
+				}
+			p::first-line{
+				  color: #8A2BE2;
+				}
+			p:first-of-type {
+  				background: red;
+				}
+			form:focus-within {
+				  background: #ff8;
+			                   color: navy;
+				}
+			a:hover {
+			  background-color: yellow;
+			}
+			input:in-range{
+				border: 2px solid blue;
+			}
+			p:lang(it) { 
+				color: #66ffb3;
+				}
+			p:last-of-type {
+				  background: #ff6666;
+				}
+			:not(p) {
+  				color: #ff6666;
+				}
+			p:nth-child(2) {
+ 				 background: #00cccc;
+				}
+			input:optional {
+  				background-color: yellow;
+				}
+			p:only-of-type {
+ 				 background: red;
+				}
+			input:read-only {
+  				background-color: yellow;
+				}
+			input:read-write {
+				  background-color: yellow;
+				}
+			input:required {
+ 				 background-color: yellow;
+				}
+			:root {
+ 				 background: #eeccff;
+				}
+			input:valid {
+ 				 background-color: yellow;
+				}
+			a:visited {
+  				color: pink;
+				}
+			p:nth-of-type(2) {
+  				background: red;
+				}
+		</style>
+	</head>
+<body>
+	<p lang="it">Tutorial Spot</p>
+	<p class="class1">Selectors Example</p>
+	<p class="class1">CSS Examples</p>
+	<div class="class3">Cascading Style Sheet</div>
+	<span id="id1">Assignment</span>
+	<div><p>
+		An external style sheet can be written in any text editor, and must be saved with a .css extension.
+		The external .css file should not contain any HTML tags.
+	</p></div>
+	<p>
+		<ul> cascading comes from the specified priority <ul>scheme to determine which style rule applies if more than one rule matches a particular element. 
+		<ul>This cascading priority scheme is predictable.<ul>
+	</p>
+	<a href="www.google.com" target="_top">HTML is hyper text markup language</a>
+	<a href="www.google.com" target="_blank">CSS is cascading style sheet</a>
+	<a href="www.google.com" title="hi css">JS is java script</a>
+	<div class="first">The first div element.</div>
+	<h3 class="top-header">This</h3>
+	<h3 class="head-er">is</h3>
+	<h3 class="team">CSS</h3>
+	<h3 class="morn">page</h1>
+	<form action="" >
+		<lable>Enter name</label><input type="text" name="text" placeholder="name" value="name" required></br>
+		<lable>Enter Country</label><input type="text" name="text"value="country" disabled="disabled"></br>
+ 		 <lable>Enter Gender</label><input type="radio" name="gender" value="male" checked> Male</br>
+	  	<input type="radio" name="gender" value="female"> Female</br>
+		<lable>Enter age</label><input type="number" min="2" max="10" name="num"></br>
+		 <label>Country Code</label><input readonly value="+91"></br>
+		<p>An optional input element:<br><input></p>
+		<p>Required input element:<br><input required></p>
+	</form>
+	<p>Thanks</p>
+	
+</body>
+</html>	
