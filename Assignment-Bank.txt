@@ -1,0 +1,164 @@
+
+mysql> use bank;
+Database changed
+mysql> select * from CustomerInfo;
++------------+--------------+--------------+-----------------+-----------------+----------+------------------+
+| CustomerID | CustomerName | CustomerCity | CustomerAddress | CusomerMobileNo | PAN      | CustomerPassword |
++------------+--------------+--------------+-----------------+-----------------+----------+------------------+
+|        100 | aakar        | coimbtore    | airport         |         9874563 | 9863254  | asdf987          |
+|        101 | saro         | coimbatore   | Gandhipuram     |         9687452 | 3596214  | oiuy987          |
+|        102 | yaashini     | chennai      | t.nagar         |         9935841 | 6398521  | plkm123          |
+|        103 | lakshana     | chennai      | o.m.r           |        93740589 | 9328741  | erty9856         |
+|        104 | shalini      | chennai      | paadi           |        99875614 | 90347541 | zxcv6896         |
+|        105 | nandhini     | tirupur      | avinashi        |         9934724 | 369852   | sfop7596         |
+|        106 | aadhav       | tirupur      | metupalayam     |        89632574 | 698564   | zsed456          |
+|        107 | priya        | chennai      | tharamani       |        88367410 | 325874   | pabu3914         |
+|        108 | aishu        | chennai      | t.nagar         |       808935145 | 254756   | manu12365        |
+|        109 | magudi       | chennai      | porur           |       968748852 | 963257   | pybsf1574        |
+|        110 | gautam       | bangalore    | harlur          |        89685742 | 39574125 | erty12574        |
++------------+--------------+--------------+-----------------+-----------------+----------+------------------+
+11 rows in set (0.19 sec)
+
+mysql> select * from AccountInfo;
++-----------+------------+-------------+----------------+-----------------+---------------+
+| AccountID | CustomerID | AccountType | AccountBalance | AccountOpenDate | AccountStatus |
++-----------+------------+-------------+----------------+-----------------+---------------+
+|       200 |        100 | savings     |          50000 | 2019-06-04      | Open          |
+|       201 |        101 | savings     |          25000 | 2018-08-06      | Closed        |
+|       202 |        102 | savings     |          27500 | 2019-10-12      | Closed        |
+|       203 |        104 | salary      |          80000 | 2020-01-20      | Blocked       |
+|       204 |        103 | salary      |          30000 | 2020-11-24      | Blocked       |
+|       205 |        105 | salary      |          59000 | 2019-08-25      | Open          |
+|       206 |        106 | salary      |          20000 | 2018-12-31      | Closed        |
+|       207 |        107 | savings     |          18000 | 2019-02-19      | Closed        |
+|       208 |        108 | savings     |          90000 | 2020-09-16      | Open          |
+|       209 |        109 | savings     |          70000 | 2018-12-09      | Open          |
+|       210 |        110 | savings     |          67000 | 2020-04-19      | Closed        |
++-----------+------------+-------------+----------------+-----------------+---------------+
+11 rows in set (0.15 sec)
+
+mysql> select * from TransactionInfo;
++---------------+-----------+-----------------+--------+-----------------+
+| TransactionID | AccountID | TransactionType | Amount | TransactionDate |
++---------------+-----------+-----------------+--------+-----------------+
+|           300 |       200 | credit          |  50000 | 2020-03-15      |
+|           301 |       201 | credit          |  25000 | 2020-09-25      |
+|           302 |       200 | debit           | -20000 | 2020-04-16      |
+|           303 |       201 | debit           |  -2000 | 2020-10-12      |
+|           304 |       202 | credit          |  60000 | 2020-01-01      |
+|           305 |       202 | debit           | -30000 | 2020-05-01      |
+|           306 |       207 | credit          |  30000 | 2020-06-27      |
+|           307 |       207 | debit           |  -5000 | 2020-10-13      |
+|           308 |       204 | creit           |  80000 | 2020-02-09      |
+|           309 |       204 | debit           | -23000 | 2020-08-05      |
+|           310 |       202 | debit           |   -200 | 2020-05-30      |
+|           311 |       202 | debit           |  -1000 | 2020-06-12      |
+|           312 |       202 | debit           |  -1600 | 2020-04-19      |
+|           313 |       202 | debit           |   -700 | 2020-05-13      |
+|           314 |       202 | debit           |   -900 | 2020-11-06      |
++---------------+-----------+-----------------+--------+-----------------+
+15 rows in set (0.00 sec)
+
+mysql> select * from TransactionInfo where AccountID=202 Limit 5;
++---------------+-----------+-----------------+--------+-----------------+
+| TransactionID | AccountID | TransactionType | Amount | TransactionDate |
++---------------+-----------+-----------------+--------+-----------------+
+|           304 |       202 | credit          |  60000 | 2020-01-01      |
+|           305 |       202 | debit           | -30000 | 2020-05-01      |
+|           310 |       202 | debit           |   -200 | 2020-05-30      |
+|           311 |       202 | debit           |  -1000 | 2020-06-12      |
+|           312 |       202 | debit           |  -1600 | 2020-04-19      |
++---------------+-----------+-----------------+--------+-----------------+
+5 rows in set (0.03 sec)
+
+
+
+mysql> select * from TransactionInfo where TransactionDate Between '2020-05-23' and '2020-10-21';
++---------------+-----------+-----------------+--------+-----------------+
+| TransactionID | AccountID | TransactionType | Amount | TransactionDate |
++---------------+-----------+-----------------+--------+-----------------+
+|           301 |       201 | credit          |  25000 | 2020-09-25      |
+|           303 |       201 | debit           |  -2000 | 2020-10-12      |
+|           306 |       207 | credit          |  30000 | 2020-06-27      |
+|           307 |       207 | debit           |  -5000 | 2020-10-13      |
+|           309 |       204 | debit           | -23000 | 2020-08-05      |
+|           310 |       202 | debit           |   -200 | 2020-05-30      |
+|           311 |       202 | debit           |  -1000 | 2020-06-12      |
++---------------+-----------+-----------------+--------+-----------------+
+7 rows in set (0.00 sec)
+
+
+
+mysql> select * from AccountInfo where CustomerID=103;
++-----------+------------+-------------+----------------+-----------------+---------------+
+| AccountID | CustomerID | AccountType | AccountBalance | AccountOpenDate | AccountStatus |
++-----------+------------+-------------+----------------+-----------------+---------------+
+|       204 |        103 | salary      |          30000 | 2020-11-24      | Blocked       |
++-----------+------------+-------------+----------------+-----------------+---------------+
+1 row in set (0.01 sec)
+
+
+
+mysql> select c.CustomerID,c.CustomerName,c.CustomerAddress,c.CusomerMobileNo,a.AccountID,a.AccountBalance from CustomerInfo c inner join AccountInfo a on c.CustomerID=a.CustomerID;
++------------+--------------+-----------------+-----------------+-----------+----------------+
+| CustomerID | CustomerName | CustomerAddress | CusomerMobileNo | AccountID | AccountBalance |
++------------+--------------+-----------------+-----------------+-----------+----------------+
+|        100 | aakar        | airport         |         9874563 |       200 |          50000 |
+|        101 | saro         | Gandhipuram     |         9687452 |       201 |          25000 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |
+|        103 | lakshana     | o.m.r           |        93740589 |       204 |          30000 |
+|        104 | shalini      | paadi           |        99875614 |       203 |          80000 |
+|        105 | nandhini     | avinashi        |         9934724 |       205 |          59000 |
+|        106 | aadhav       | metupalayam     |        89632574 |       206 |          20000 |
+|        107 | priya        | tharamani       |        88367410 |       207 |          18000 |
+|        108 | aishu        | t.nagar         |       808935145 |       208 |          90000 |
+|        109 | magudi       | porur           |       968748852 |       209 |          70000 |
+|        110 | gautam       | harlur          |        89685742 |       210 |          67000 |
++------------+--------------+-----------------+-----------------+-----------+----------------+
+11 rows in set (0.00 sec)
+
+
+
+mysql> select a.AccountID,a.AccountBalance,t.TransactionID,t.TransactionType,t.Amount from AccountInfo a inner join TransactionInfo t on a.AccountId=t.AccountID;
++-----------+----------------+---------------+-----------------+--------+
+| AccountID | AccountBalance | TransactionID | TransactionType | Amount |
++-----------+----------------+---------------+-----------------+--------+
+|       200 |          50000 |           300 | credit          |  50000 |
+|       200 |          50000 |           302 | debit           | -20000 |
+|       201 |          25000 |           301 | credit          |  25000 |
+|       201 |          25000 |           303 | debit           |  -2000 |
+|       202 |          27500 |           304 | credit          |  60000 |
+|       202 |          27500 |           305 | debit           | -30000 |
+|       202 |          27500 |           310 | debit           |   -200 |
+|       202 |          27500 |           311 | debit           |  -1000 |
+|       202 |          27500 |           312 | debit           |  -1600 |
+|       202 |          27500 |           313 | debit           |   -700 |
+|       202 |          27500 |           314 | debit           |   -900 |
+|       204 |          30000 |           308 | creit           |  80000 |
+|       204 |          30000 |           309 | debit           | -23000 |
+|       207 |          18000 |           306 | credit          |  30000 |
+|       207 |          18000 |           307 | debit           |  -5000 |
++-----------+----------------+---------------+-----------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select c.CustomerID,c.CustomerName,c.CustomerAddress,c.CusomerMobileNo,a.AccountID,a.AccountBalance,t.TransactionID,t.TransactionType,t.Amount from CustomerInfo c inner join AccountInfo a on c.CustomerID=a.CustomerID inner join TransactionInfo t on a.AccountID=t.AccountID ;
++------------+--------------+-----------------+-----------------+-----------+----------------+---------------+-----------------+--------+
+| CustomerID | CustomerName | CustomerAddress | CusomerMobileNo | AccountID | AccountBalance | TransactionID | TransactionType | Amount |
++------------+--------------+-----------------+-----------------+-----------+----------------+---------------+-----------------+--------+
+|        100 | aakar        | airport         |         9874563 |       200 |          50000 |           300 | credit          |  50000 |
+|        100 | aakar        | airport         |         9874563 |       200 |          50000 |           302 | debit           | -20000 |
+|        101 | saro         | Gandhipuram     |         9687452 |       201 |          25000 |           301 | credit          |  25000 |
+|        101 | saro         | Gandhipuram     |         9687452 |       201 |          25000 |           303 | debit           |  -2000 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           304 | credit          |  60000 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           305 | debit           | -30000 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           310 | debit           |   -200 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           311 | debit           |  -1000 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           312 | debit           |  -1600 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           313 | debit           |   -700 |
+|        102 | yaashini     | t.nagar         |         9935841 |       202 |          27500 |           314 | debit           |   -900 |
+|        103 | lakshana     | o.m.r           |        93740589 |       204 |          30000 |           308 | creit           |  80000 |
+|        103 | lakshana     | o.m.r           |        93740589 |       204 |          30000 |           309 | debit           | -23000 |
+|        107 | priya        | tharamani       |        88367410 |       207 |          18000 |           306 | credit          |  30000 |
+|        107 | priya        | tharamani       |        88367410 |       207 |          18000 |           307 | debit           |  -5000 |
++------------+--------------+-----------------+-----------------+-----------+----------------+---------------+-----------------+--------+
+15 rows in set (0.00 sec)
