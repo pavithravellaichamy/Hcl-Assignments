@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Assignment Number</title>
+  <script>
+  
+   function check() //cheching whether the value is number or not 
+   {
+	 var x=prompt("Enter value","0");
+	 if(parseInt(x))
+	 {
+		do
+		{
+		var ch=prompt("1.Even or odd 2.Prime or not 3.Palindrome or not 4.Armstrong or not",null);
+			switch(Number(ch))
+			{
+				case 1:
+					document.write(isEven(Number(x)));  //calling the function
+					break;
+				case 2:
+					document.write(isPrime(Number(x)));
+					break;
+				case 3:
+					document.write(isPalindrome(Number(x)));
+					break;
+				case 4:
+					document.write(isArmstrong(Number(x)));
+					break;
+				case 5:
+					document.write("Logout");
+					break;
+			}
+		}while (ch!=5);
+	}
+ }
+ 
+		function isEven(x)
+			{
+				if(x%2==0)
+				{
+					return "Even number"; //cheching whether the number is even or not 
+				}
+				else
+				{
+					return"Odd number";
+				}
+			}
+		function isPrime(x)
+			{
+				var count=0;
+				for (var i=2;i<x ;i++ )
+				{
+					if(x%i==0)
+					{
+						count=count+1;
+					}
+				}
+				var b=(count<1)?"Prime number":"Not a prime number"; //cheching whether the number is prime or not 
+				return b;
+			}
+		function isPalindrome(x)
+			{
+				var n=x.toString();
+				var c=(n.split('').reverse().join()==x)?"Palindrome":"Not Palindrome";  //cheching whether the number is palindrome or not 
+				return c;
+			}
+		function isArmstrong(x)
+		   {
+			var temp=x;
+			var sum=0;
+			var n=x.toString();
+			var len=n.length;
+			var tem=parseInt(temp);
+			var len=parseInt(len);
+			var rem=parseInt(rem);
+			var sum=parseInt(sum);
+			while(temp>0)
+			{
+				 rem=temp%10;
+				 sum=sum+Math.pow(rem,len);
+				temp=parseInt(temp/10);
+			}
+			var d=(sum==x)?"Armstrong number":"Not armstrong number";  //cheching whether the number is armstrong or not
+			return d;
+		  }
+</script>
+ </head>
+ <body>
+ 	<script>
+		check(); // calling the function 
+	</script>
+ </body>
+</html>
